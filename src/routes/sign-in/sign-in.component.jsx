@@ -2,11 +2,14 @@ import { Link } from "react-router-dom";
 import Poster from "./../../assets/logos/company box mockup.jpg";
 import "./sign-in.styles.scss";
 import { BsGoogle } from "react-icons/bs";
-import { signInWithGooglePopup } from "../../utils/firebase/firebase.utils";
+import {
+  signInWithGooglePopup,
+  createUserDocFromAuth,
+} from "../../utils/firebase/firebase.utils";
 const SignIn = () => {
   const logUserGoogle = async () => {
-    const response = await signInWithGooglePopup();
-    console.log(response);
+    const { user } = await signInWithGooglePopup();
+    createUserDocFromAuth(user);
   };
   return (
     <div className="sign-in_form_container">
