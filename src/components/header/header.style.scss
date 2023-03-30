@@ -1,0 +1,72 @@
+.header-container {
+  background-color: var(--secondary-color);
+  .contact-area,
+  .medium,
+  .top-header,
+  .offer-container {
+    align-items: center;
+    display: flex;
+    gap: 0.5rem;
+    color: var(--teritary-color);
+  }
+  .contact-area {
+    gap: 1rem;
+  }
+  .medium a,
+  .medium .icon,
+  .offer-container a {
+    text-decoration: none;
+    color: var(--teritary-color);
+  }
+  .offer-container a {
+    background-color: var(--primary-color);
+    padding: 0.3rem;
+    border-radius: 2px;
+  }
+  .top-header {
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+  }
+
+  // main header
+  .main-header {
+    background-color: var(--teritary-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 4rem;
+    border-bottom: 1px solid gray;
+  }
+  .company-logo {
+    height: 100px;
+  }
+  .navbar ul {
+    display: flex;
+    list-style: none;
+  }
+  .navbar ul li a {
+    padding-inline-end: 30px;
+    font-size: 1.1rem;
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--secondary-color);
+    transition: 200ms ease-in-out;
+  }
+  .navbar ul li a:hover {
+    color: var(--primary-color);
+  }
+
+  // user area
+  .user-area {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: 1.5rem;
+  }
+  .user-area .icon {
+    cursor: pointer;
+  }
+  // user area
+  // main header
+}

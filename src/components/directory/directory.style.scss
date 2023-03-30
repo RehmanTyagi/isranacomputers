@@ -1,0 +1,15 @@
+:root {
+  --primary-color: red;
+  --secondary-color: black;
+  --teritary-color: white;
+  --fourth-color: lightgray;
+}
+
+.categories-container {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  font-family: "Bebas Neue", cursive;
+  letter-spacing: 3px;
+  grid-template-columns: repeat(3, 1fr);
+}
