@@ -1,0 +1,37 @@
+.sign-in_form_container {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 2px 5px 50px lightgray;
+  .login-form,
+  .inputs-container {
+    display: flex;
+    gap: 0.6rem;
+    flex-direction: column;
+  }
+  .login-form {
+    padding: 3rem;
+  }
+  .inputs-container input {
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
+  .forget-password {
+    margin: 0.5rem 0;
+    width: fit-content;
+  }
+  h2 {
+    text-align: center;
+    background-color: rgb(43, 43, 43);
+    padding: 1rem 0.5rem;
+    color: white;
+  }
+  .login-form .button-seperation_element {
+    box-shadow: 1px 1px black;
+    border: 1px solid black;
+    border-radius: 100%;
+    margin: auto;
+    padding: 0.5rem;
+    font-weight: 800;
+    width: fit-content;
+  }
+}

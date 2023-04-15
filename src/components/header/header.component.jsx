@@ -55,7 +55,7 @@ const Header = () => {
           </nav>
           <div className="user-area">
             <BsSearch className="icon" />
-            <Link to={"sign-in"}>
+            <Link to={"auth"}>
               <BsPerson className="icon" />
             </Link>
             <BsHeart className="icon" />
