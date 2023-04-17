@@ -1,9 +1,10 @@
 import "./sign-up-form.styels.scss";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { createUserAuthWithEmailPassword, createUserDocFromAuth, signInWithGooglePopup } from "../../utils/firebase/firebase.utils";
 import FormInput from "../../components/formInput/form-input.component";
 import Button from "../../components/button/button.component";
 import SignInForm from "../sign-in/sign-in-form.component";
+import { UserContext } from "../../context/user-context.component";
 const defaultFormFields = {
   displayName: "",
   email: "",
@@ -11,6 +12,9 @@ const defaultFormFields = {
   passwordRepeat: "",
 };
 const SignUpForm = () => {
+  //user info setter
+  const { setCurrentUser } = useContext(UserContext)
+  //user info setter
 
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, passwordRepeat } = formFields;
@@ -37,7 +41,7 @@ const SignUpForm = () => {
       const { user } = await createUserAuthWithEmailPassword(email, password)
       createUserDocFromAuth(user, { displayName })
       resetFormFields()
-      console.log({ ...formFields })
+      setCurrentUser(user)
 
     }
     catch (error) {

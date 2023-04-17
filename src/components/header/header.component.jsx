@@ -10,8 +10,10 @@ import "./header.style.scss";
 import LogoIcon from "./../../assets/logos/logo-for-web-transparent.png";
 import { Outlet, Link } from "react-router-dom";
 import { Fragment } from "react";
-
+import { UserContext } from "../../context/user-context.component";
+import { useContext } from "react";
 const Header = () => {
+  const { currentUser } = useContext(UserContext)
   return (
     <Fragment>
       <div className="header-container">
@@ -55,8 +57,8 @@ const Header = () => {
           </nav>
           <div className="user-area">
             <BsSearch className="icon" />
-            <Link to={"auth"}>
-              <BsPerson className="icon" />
+            <Link to={!currentUser ? "auth" : "user"}>
+              {currentUser ? currentUser.displayName : <BsPerson className="icon" />}
             </Link>
             <BsHeart className="icon" />
             <BsCart2 className="icon" />
@@ -64,7 +66,7 @@ const Header = () => {
         </div>
       </div>
       <Outlet />
-    </Fragment>
+    </Fragment >
   );
 };
 
