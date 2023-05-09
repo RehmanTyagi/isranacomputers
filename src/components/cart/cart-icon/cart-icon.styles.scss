@@ -1,0 +1,21 @@
+.icon-container {
+  position: relative;
+
+  .item-counter {
+    border: 2px solid black;
+    position: absolute;
+    border-radius: 100%;
+    padding: 3px;
+    font-weight: 700;
+    font-size: 12px;
+    bottom: 80%;
+    left: 70%;
+    width: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cart-icon {
+    cursor: pointer;
+  }
+}

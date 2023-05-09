@@ -1,0 +1,26 @@
+.Card-container {
+  background-color: white;
+  border-radius: 10px;
+  padding: 0.5rem;
+  overflow: hidden;
+  display: grid;
+  grid-gap: 1rem;
+  text-align: center;
+  grid-template-columns: repeat(2, 1fr);
+  .product-img {
+    height: 100%;
+    width: 100%;
+    grid-column: 1/-1;
+  }
+  .product-title {
+    font-size: 1.2rem;
+  }
+  .add-to-cart_btn,
+  .buy-now_btn {
+    border-top-right-radius: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    color: white;
+    background-color: red;
+  }
+}

@@ -1,0 +1,14 @@
+.back-drop {
+  display: none;
+  background-color: rgba($color: #000000, $alpha: 0.6);
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.active {
+  display: block;
+}

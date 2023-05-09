@@ -1,10 +1,9 @@
 import "./sign-up-form.styels.scss";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { createUserAuthWithEmailPassword, createUserDocFromAuth, signInWithGooglePopup } from "../../utils/firebase/firebase.utils";
 import FormInput from "../../components/formInput/form-input.component";
 import Button from "../../components/button/button.component";
 import SignInForm from "../sign-in/sign-in-form.component";
-import { UserContext } from "../../context/user-context.component";
 const defaultFormFields = {
   displayName: "",
   email: "",
@@ -13,43 +12,40 @@ const defaultFormFields = {
 };
 const SignUpForm = () => {
   //user info setter
-  const { setCurrentUser } = useContext(UserContext)
   //user info setter
 
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, passwordRepeat } = formFields;
 
   const resetFormFields = () => {
-    setFormFields(defaultFormFields)
-  }
+    setFormFields(defaultFormFields);
+  };
 
   const signUpWithGoogle = async () => {
     const { user } = await signInWithGooglePopup();
     createUserDocFromAuth(user);
-    console.log(user)
+    console.log(user);
   };
 
   const formhandler = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
     if (password !== passwordRepeat) {
-      alert('password does not match!')
+      alert('password does not match!');
       return;
     }
 
     try {
-      const { user } = await createUserAuthWithEmailPassword(email, password)
-      createUserDocFromAuth(user, { displayName })
-      resetFormFields()
-      setCurrentUser(user)
-
+      const { user } = await createUserAuthWithEmailPassword(email, password);
+      createUserDocFromAuth(user, { displayName });
+      resetFormFields();
     }
     catch (error) {
-      console.log(error)
-      alert(error)
+      console.log(error);
+      alert(error);
     }
 
-  }
+  };
 
   const inputChangeHandler = (e) => {
     const { name, value } = e.target;

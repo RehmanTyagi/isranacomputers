@@ -1,0 +1,33 @@
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  grid-gap: 5px;
+  font-size: 1rem;
+  padding: 0.5rem;
+  background-color: white;
+  border-radius: 5px;
+  .product-img {
+    height: 100%;
+    width: 100%;
+    grid-column: 1/-1;
+    border-radius: 10px;
+  }
+  .remove-item_btn {
+    cursor: pointer;
+    grid-column: 1/-1;
+    justify-self: flex-end;
+  }
+  .product-title {
+    grid-column: 1/-1;
+  }
+  .product-quantity {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    .quantity-plus_btn,
+    .quantity-minus_btn {
+      cursor: pointer;
+    }
+  }
+}

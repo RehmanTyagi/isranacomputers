@@ -3,13 +3,10 @@ import "./sign-in-form.styles.scss";
 import Button from "../../components/button/button.component";
 import {
   signInWithGooglePopup,
-  createUserDocFromAuth,
   signInUserAuthWithEmailPassword
 } from "../../utils/firebase/firebase.utils";
 import FormInput from "../../components/formInput/form-input.component";
-import { useState, useContext } from "react";
-import { UserContext } from "../../context/user-context.component";
-
+import { useState } from "react";
 const defaultFormFields = {
   email: "",
   password: "",
@@ -17,36 +14,38 @@ const defaultFormFields = {
 
 const SignInForm = () => {
 
-  const { setCurrentUser, } = useContext(UserContext)
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
   const resetFormFields = () => {
-    setFormFields(defaultFormFields)
-  }
+    setFormFields(defaultFormFields);
+
+  };
 
   const signInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup();
-    createUserDocFromAuth(user);
-    setCurrentUser(user)
+    try {
+      await signInWithGooglePopup();
+      window.location.href = "products";
+
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   const formhandler = async (event) => {
-    event.preventDefault()
-
+    event.preventDefault();
     try {
-      const user = await signInUserAuthWithEmailPassword(email, password)
-      setCurrentUser(user)
-      console.log(user)
-      resetFormFields()
+      await signInUserAuthWithEmailPassword(email, password);
+      resetFormFields();
+      window.location.href = "products";
 
     }
     catch (error) {
-      console.log(error)
-      alert(error)
+      console.log(error);
+      alert(error);
     }
 
-  }
+  };
 
   const inputChangeHandler = (e) => {
     const { name, value } = e.target;

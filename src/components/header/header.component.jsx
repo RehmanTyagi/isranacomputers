@@ -1,19 +1,19 @@
 import {
   BsPhone,
   BsEnvelope,
-  BsPerson,
   BsSearch,
   BsHeart,
-  BsCart2,
 } from "react-icons/bs";
 import "./header.style.scss";
-import LogoIcon from "./../../assets/logos/logo-for-web-transparent.png";
+import LogoIcon from "./../../assets/logos/final-logo-main.svg";
 import { Outlet, Link } from "react-router-dom";
 import { Fragment } from "react";
-import { UserContext } from "../../context/user-context.component";
+import { UserContext } from "../../context/user.context";
 import { useContext } from "react";
+import { signOutCurrentUser } from "../../utils/firebase/firebase.utils";
+import CartIcon from "../cart/cart-icon/cart-icon.component";
 const Header = () => {
-  const { currentUser } = useContext(UserContext)
+  const { currentUser } = useContext(UserContext);
   return (
     <Fragment>
       <div className="header-container">
@@ -57,11 +57,16 @@ const Header = () => {
           </nav>
           <div className="user-area">
             <BsSearch className="icon" />
-            <Link to={!currentUser ? "auth" : "user"}>
-              {currentUser ? currentUser.displayName : <BsPerson className="icon" />}
-            </Link>
+            {currentUser ?
+              (
+                <Link to={"#"} className="list-item" onClick={signOutCurrentUser}>Sign Out</Link>
+              ) :
+              (
+                <Link to={'/auth'}>Sign In</Link>
+              )
+            }
             <BsHeart className="icon" />
-            <BsCart2 className="icon" />
+            <CartIcon />
           </div>
         </div>
       </div>
