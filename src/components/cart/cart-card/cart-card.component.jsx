@@ -6,7 +6,8 @@ import { CartContext } from "../../../context/cart.context";
 import { useContext } from "react";
 const CartCard = (props) => {
     const { removeItemFromCart, quantityMinusHandler, quantityPlusHandler } = useContext(CartContext);
-    const { name, imageURL, price, quantity } = props.item;
+    const { name, imageURL, price, quantity, } = props.item;
+    const { className } = props;
 
     const removeCartItemHandler = () => removeItemFromCart(props.item);
     const cartQuantityHandlerMinus = () => {
@@ -16,7 +17,7 @@ const CartCard = (props) => {
         quantityPlusHandler(props.item);
     };
     return (
-        <div className="card-container">
+        <div className={`card-container ${className}`}>
             <BsFillXCircleFill onClick={removeCartItemHandler} className="remove-item_btn" />
             <img className="product-img" src={imageURL} alt="s" />
             <p className="product-title">{name}</p>

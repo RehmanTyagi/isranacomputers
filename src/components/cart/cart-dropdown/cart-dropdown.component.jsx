@@ -6,6 +6,9 @@ import Button from "../../button/button.component";
 // cartContext
 import { CartContext } from "../../../context/cart.context";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
+
+// ract router 
 
 // main function
 const CartDropDown = (props) => {
@@ -16,12 +19,15 @@ const CartDropDown = (props) => {
     return (
 
         <div className={`dropdown-container ${className}`}>
-            <BsFillXCircleFill onClick={() => setIsCartToggle(true)} className="remove-btn" />
+            <BsFillXCircleFill onClick={() => setIsCartToggle(false)} className="remove-btn" />
             <div className="cards-container">
                 {cartItems.map(item => <CartCard key={item.id} item={item} />)}
             </div>
-            <Button buttonTitle={"CheckOut"} buttonType={"inverted"} />
-        </div>
+            <Link to={cartItems.length ? "checkout" : "#"}>
+                <Button onClick={() => setIsCartToggle(false)} buttonTitle={"Checkout"} buttonType={"inverted"} />
+            </Link>
+
+        </div >
     );
 
 };

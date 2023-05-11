@@ -21,11 +21,11 @@ const SignUpForm = () => {
     setFormFields(defaultFormFields);
   };
 
-  const signUpWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup();
-    createUserDocFromAuth(user);
-    console.log(user);
-  };
+  // const signUpWithGoogle = async () => {
+  //   const { user } = await signInWithGooglePopup();
+  //   createUserDocFromAuth(user);
+  //   console.log(user);
+  // };
 
   const formhandler = async (event) => {
     event.preventDefault();
@@ -99,8 +99,8 @@ const SignUpForm = () => {
               onChange: inputChangeHandler
             }} />
           <Button buttonTitle='SignUp' type='submit' buttonType='inverted' />
-          <Button type="button" onClick={signUpWithGoogle} buttonTitle='SignUp With Google' buttonType='google' />
-        </form>
+          {//          <Button type="button" onClick={signUpWithGoogle} buttonTitle='SignUp With Google' buttonType='google' />
+          }        </form>
       </div>
     </div>
   );

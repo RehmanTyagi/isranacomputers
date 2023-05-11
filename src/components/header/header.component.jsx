@@ -12,7 +12,7 @@ import { UserContext } from "../../context/user.context";
 import { useContext } from "react";
 import { signOutCurrentUser } from "../../utils/firebase/firebase.utils";
 import CartIcon from "../cart/cart-icon/cart-icon.component";
-const Header = () => {
+const Header = (props) => {
   const { currentUser } = useContext(UserContext);
   return (
     <Fragment>
