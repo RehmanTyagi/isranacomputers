@@ -1,4 +1,4 @@
-import CategoryItem from "./../category/category.component";
+import CategoryItem from "../categories/categories.component";
 import "./directory.style.scss";
 const CategoriesDirectory = ({ categories }) => (
   <div className="categories-container">

@@ -19,6 +19,9 @@
     overflow-y: scroll;
     height: 100%;
   }
+  .cards-container img {
+    height: 150px;
+  }
   .cards-container::-webkit-scrollbar {
     width: 10px;
   }

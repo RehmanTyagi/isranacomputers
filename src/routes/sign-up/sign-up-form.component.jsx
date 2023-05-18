@@ -1,9 +1,10 @@
 import "./sign-up-form.styels.scss";
 import { useState } from "react";
-import { createUserAuthWithEmailPassword, createUserDocFromAuth, signInWithGooglePopup } from "../../utils/firebase/firebase.utils";
+import { createUserAuthWithEmailPassword, createUserDocFromAuth } from "../../utils/firebase/firebase.utils";
 import FormInput from "../../components/formInput/form-input.component";
 import Button from "../../components/button/button.component";
 import SignInForm from "../sign-in/sign-in-form.component";
+import useAlert from "../../hooks/alert-custom-hook/alert.hook";
 const defaultFormFields = {
   displayName: "",
   email: "",
@@ -11,11 +12,10 @@ const defaultFormFields = {
   passwordRepeat: "",
 };
 const SignUpForm = () => {
-  //user info setter
-  //user info setter
 
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, passwordRepeat } = formFields;
+  const { setAlert } = useAlert();
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -31,7 +31,7 @@ const SignUpForm = () => {
     event.preventDefault();
 
     if (password !== passwordRepeat) {
-      alert('password does not match!');
+      setAlert('password does not match!', 'error');
       return;
     }
 
@@ -39,10 +39,10 @@ const SignUpForm = () => {
       const { user } = await createUserAuthWithEmailPassword(email, password);
       createUserDocFromAuth(user, { displayName });
       resetFormFields();
+      setAlert(`${displayName + " "} Your Account Created Successfully!`, 'success');
     }
     catch (error) {
-      console.log(error);
-      alert(error);
+      setAlert(error.code, 'error');
     }
 
   };

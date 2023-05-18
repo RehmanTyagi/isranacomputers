@@ -1,18 +1,16 @@
-import "./category-item.style.scss";
-const CategoryItem = ({ category }) => {
-  const { categoryTitle, categoryImg } = category;
-  return (
-    <div className="category-container">
-      <div className="category-body_container">
-        <div
-          className="background-image"
-          style={{ backgroundImage: `url(${categoryImg})` }}
-        />
-        <h1>{categoryTitle}</h1>
-        <button className="shop-now_btn">Shop Now</button>
-      </div>
-    </div>
-  );
+import "./category.style.scss";
+import ProductCard from "../product-card/product-card.component";
+const Category = ({ title, products }) => {
+    return (
+        <div className="category-preview-container">
+            <h2 className="category-title"><span>{title.toUpperCase()}</span></h2>
+            <div className="preview">
+                {
+                    products.filter((_, index) => index < 4).map(product => <ProductCard key={product.id} product={product} />)
+                }
+            </div>
+        </div>
+    );
 };
 
-export default CategoryItem;
+export default Category;

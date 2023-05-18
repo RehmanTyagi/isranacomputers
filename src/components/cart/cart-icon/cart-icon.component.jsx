@@ -4,6 +4,7 @@ import CartDropDown from "../cart-dropdown/cart-dropdown.component";
 import BackDrop from "../../back-drop/back-drop.component";
 import { useContext } from "react";
 import { CartContext } from "../../../context/cart.context";
+
 const CartIcon = (props) => {
     const { isCartToggle, setIsCartToggle, cartItems } = useContext(CartContext);
     const dropDownToggle = () => {
@@ -15,6 +16,7 @@ const CartIcon = (props) => {
             <span className="item-counter">{cartItems.length}</span>
             <CartDropDown className={isCartToggle ? "active" : ""} />
             <BackDrop onToggle={dropDownToggle} className={isCartToggle ? "active" : ""} />
+
         </div>
     );
 };

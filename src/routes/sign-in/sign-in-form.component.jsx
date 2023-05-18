@@ -7,6 +7,7 @@ import {
 } from "../../utils/firebase/firebase.utils";
 import FormInput from "../../components/formInput/form-input.component";
 import { useState } from "react";
+import useAlert from "../../hooks/alert-custom-hook/alert.hook";
 const defaultFormFields = {
   email: "",
   password: "",
@@ -16,6 +17,7 @@ const SignInForm = () => {
 
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
+  const { setAlert } = useAlert();
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -25,10 +27,11 @@ const SignInForm = () => {
   const signInWithGoogle = async () => {
     try {
       await signInWithGooglePopup();
+      setAlert('user is logged in', 'success');
       window.location.href = "products";
 
     } catch (error) {
-      console.log(error.message);
+      setAlert(error.code, 'error');
     }
   };
 
@@ -37,12 +40,12 @@ const SignInForm = () => {
     try {
       await signInUserAuthWithEmailPassword(email, password);
       resetFormFields();
+      setAlert("User logged in!", 'success');
       window.location.href = "products";
 
     }
     catch (error) {
-      console.log(error);
-      alert(error);
+      setAlert(error.code, 'error');
     }
 
   };

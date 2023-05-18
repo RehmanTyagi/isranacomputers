@@ -5,17 +5,22 @@ import {
   BsHeart,
 } from "react-icons/bs";
 import "./header.style.scss";
-import LogoIcon from "./../../assets/logos/final-logo-main.svg";
+import LogoIcon from "./../../assets/logos/logo-svg (1).svg";
 import { Outlet, Link } from "react-router-dom";
 import { Fragment } from "react";
 import { UserContext } from "../../context/user.context";
 import { useContext } from "react";
 import { signOutCurrentUser } from "../../utils/firebase/firebase.utils";
 import CartIcon from "../cart/cart-icon/cart-icon.component";
+import AlertPopup from "../alert/alert.component";
+
 const Header = (props) => {
   const { currentUser } = useContext(UserContext);
+
+
   return (
     <Fragment>
+      <AlertPopup />
       <div className="header-container">
         <div className="top-header">
           <div className="contact-area">
@@ -29,11 +34,11 @@ const Header = (props) => {
             </span>
           </div>
           <div className="offer-container">
-            10% of on new users <a href="shop">Shop Now</a>
+            10% of on new users <Link to={'auth'}>Shop Now</Link>
           </div>
         </div>
         <div className="main-header">
-          <Link to="/">
+          <Link to="/home">
             <img className="company-logo" src={LogoIcon} alt="logo" />
           </Link>
           <nav className="navbar">
@@ -71,7 +76,7 @@ const Header = (props) => {
         </div>
       </div>
       <Outlet />
-    </Fragment >
+    </Fragment>
   );
 };
 

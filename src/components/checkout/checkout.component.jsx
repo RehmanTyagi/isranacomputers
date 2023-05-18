@@ -12,7 +12,6 @@ import Button from "../button/button.component";
 import { Link } from "react-router-dom";
 const CheckOut = () => {
     const { cartItems } = useContext(CartContext);
-
     const subTotal = cartItems.reduce(function (acc, obj) { return acc + obj.price * obj.quantity; }, 0);
     const totalGST = subTotal * 18 / 100;
     const deliveryCharge = subTotal ? 120 : 0;
@@ -21,7 +20,7 @@ const CheckOut = () => {
     return (
         <div className="checkout-container">
             <div className="products-container">
-                {cartItems.map((item) => <CartCard className="checkout-item" item={item} />)}
+                {cartItems.map((item, index) => <CartCard key={index} className="checkout-item" item={item} />)}
             </div>
             <div className="sub-total_container">
                 <div className="payment-details">
